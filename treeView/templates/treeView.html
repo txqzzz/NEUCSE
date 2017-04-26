@@ -1,0 +1,43 @@
+{% load staticfiles %}
+{% load mptt_tags %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NEUCSE</title>
+    <link rel="stylesheet" href="{% static "css/css.css" %}"/>
+    <script src="{% static "js/jquery.min.js" %}"></script>
+    <script src="{% static "js/simpleTree.js" %}"></script>
+    <script type="text/javascript">
+        $(function(){
+            $(".framework_nav").SimpleTree({
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="framework_nav">
+        <ul>
+            <li class="all">
+                <a href="#">学院概况</a>
+                <div class="manage-button"><a href="#">Manage</a></div> <!-- ###need repair### -->
+            </li>
+            <ul show="true">
+                {% recursetree nodes %}
+                    <li>
+                        {% if node.is_leaf_node %}
+                            <li><a href="#">{{ node.name }}</a></li>
+                        {% else %}
+                            <li><a href="#">{{ node.name }}</a></li>
+                            <ul>
+                                <li><a href="#">{{ children }}</a></li>
+                            </ul>
+                        {% endif %}
+                    </li>
+                {% endrecursetree %}
+            </ul>
+        </ul>
+    </div>
+</body>
+</html>
