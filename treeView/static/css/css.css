@@ -7,12 +7,14 @@ a {
 }
 
 .framework_nav li {
-    line-height: 48px;
-    padding: 0 0 0 25px;
+    line-height: 24px;
+    padding: 0 auto;
+    margin-left: -24px;
 }
 
 .framework_nav ul ul {
-    padding: 0 0 0 25px;
+    padding: 0 auto;
+    margin-left: -24px;
 }
 
 .framework_nav a {
@@ -20,12 +22,16 @@ a {
 }
 
 .framework_nav .folder {
-    background:url(../img/#) 5px center no-repeat;
+    /*background:url(http://www.umassd.edu/media/supportingfiles/layoutassets/images/arrows.png) 5px center no-repeat;*/
+	/*background:  transparent url(http://www.umassd.edu/media/supportingfiles/layoutassets/images/arrows.png) no-repeat bottom center;
+	border: none;
+	cursor: pointer;*/
 }
 
 .framework_nav .open {
-    background:url(../img/#) 5px center no-repeat;
-}
+    /*background:url(http://www.umassd.edu/media/supportingfiles/layoutassets/images/arrows.png) 5px center no-repeat;*/
+    /*background: transparent url(http://www.umassd.edu/media/supportingfiles/layoutassets/images/arrows.png) no-repeat top center;
+*/}
 
 .framework_nav .all {
     background-color:#00A0E8;
@@ -43,8 +49,8 @@ a {
     color: #fff;
 }
 
-.manage-button {
+/*.manage-button {
     float:right;
     margin-right: 25px;
     margin-top: -45px;
-}
+}*/

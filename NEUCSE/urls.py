@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 """NEUCSE URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
@@ -13,11 +14,16 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+
+from django.conf.urls import url, include
 from django.contrib import admin
 from treeView import views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^treeView/', views.tree, name= 'tree'),
+    #url(r'^treeView/', views.tree, name='tree'),
+    url(r'^treeView/', include('treeView.urls')),
+    url(r'^$', views.index, name='index'),
+#    url(r'^组织结构.html', views., name='index'),
+#    url(r'^$/组织结构.html/', views.institude, name='institude'),
 ]
