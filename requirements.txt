@@ -1,4 +1,4 @@
-# requirements for django
+# Basic requirements
 Django>=1.11
 django-mptt>=0.8.7
 django-mptt-admin>=0.4.5
@@ -8,4 +8,5 @@ pytest>=3.0.5
 pytest-django>=3.1.2
 pytest-cov>=2.4.0
 
-
+# Coverage.py
+coverage==4.4

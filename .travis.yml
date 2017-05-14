@@ -15,8 +15,10 @@ install:
 # command to run tests
 before_script:
     - python manage.py makemigrations
-
+    - python manage.py runserver &
 script:
     - python manage.py migrate -v 3
     - python manage.py test -v 3
-
+    - coverage run manage.py test -v 3
+after_script:
+    - coveralls
