@@ -24,6 +24,7 @@ urlpatterns = [
     #url(r'^treeView/', views.tree, name='tree'),
     url(r'^treeView/', include('treeView.urls')),
     url(r'^$', views.index, name='index'),
+    url(r'newspush/', include('NewsPush.urls', namespace='NewsPush')),
 #    url(r'^组织结构.html', views., name='index'),
 #    url(r'^$/组织结构.html/', views.institude, name='institude'),
 ]
