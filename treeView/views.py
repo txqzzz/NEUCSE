@@ -4,10 +4,6 @@ from django.shortcuts import render_to_response, render
 from treeView.models import treeView
 
 
-# Create your views here.
-
-
-
 def tree(request):
     nodes = treeView.objects.all()
     return render_to_response("treeView.html", {'nodes': nodes})
