@@ -1,0 +1,31 @@
+html, body {
+    height: 100%;
+    background-color: #747D93;
+    margin: 0 auto;
+    padding: 0;
+    border: 0;
+}
+
+.wrapper {
+    min-height: 100%;
+    margin-bottom: -80px;
+}
+.wrapper:after {
+    content: "";
+    display: block;
+}
+
+
+.footer, .wrapper:after {
+    height: 80px;
+    font-size: 12px;
+}
+
+
+#treeView {
+    background-color: #00A0E8;
+}
+
+.container {
+
+}
