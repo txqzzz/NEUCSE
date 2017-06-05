@@ -18,18 +18,29 @@ $(function () {
             /* option._init() End */
 
             this.find("li").click(function () {
-
                 option.click($(this).find("a")[0]);
-
-
                 if ($(this).next("ul").attr("show") == "true") {
                     $(this).next("ul").attr("show", "false");
+                    $(this).parent().find("button").first().removeClass("switched");
                 } else {
                     $(this).next("ul").attr("show", "true");
+                    $(this).parent().find("button").first().addClass("switched")
                 }
-
                 option._init();
             });
+
+            /*this.find("button").click(function () {
+                //console.log($(this).parent().next("li").next("ul"));
+                if ($(this).parent().next("li").next("ul").attr("show") == "true") {
+                    $(this).parent().next("li").next("ul").attr("show", "false");
+                    $(this).removeClass("switched");
+                    console.log($(this).removeClass("switched"));
+                } else {
+                    $(this).parent().next("li").next("ul").attr("show", "true");
+                    $(this).addClass("switched")
+                }
+                option._init();
+            });*/
 
             this.find("ul").prev("li").addClass("folder");
 
