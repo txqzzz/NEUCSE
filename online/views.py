@@ -5,10 +5,7 @@ from django.template import RequestContext
 from django import forms
 from online.models import User
 from PIL import Image, ImageFont, ImageDraw
-try:
-    from StringIO import StringIO
-except ImportError:
-    from io import StringIO
+from io import BytesIO
 from random import randint
 from django.shortcuts import render
 
@@ -125,7 +122,7 @@ def verify(request, width, height):
         line = (randint(0, width), randint(0, height), randint(0, width), randint(0, height))
         draw.line(line, fill=linecolor)
     del draw
-    mstream = StringIO()
+    mstream = BytesIO()
     img.save(mstream, 'jpeg')
     request.session['verify'] = verifytext
     return HttpResponse(mstream.getvalue(), 'image/jpeg')
