@@ -1,0 +1,8 @@
+{% extends "layout/master.html" %}
+{% block maincontent %}
+    <h1>{{ news.title }}</h1>
+    <br/>
+    <h3>{{ news.body }}</h3>
+    <br/><br/>
+    <a href="#" onclick="history.go(-1);">返回上一级</a>
+{% endblock %}

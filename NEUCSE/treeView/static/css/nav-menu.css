@@ -1,0 +1,75 @@
+/* nav */
+#nav-menu {
+    position: relative;
+    top:50px;
+}
+#nav {
+    height: 40px;
+    position: relative;
+    float: right;
+    right: 0;
+    top: 0;
+    /*background: #000;*/
+    /*background: rgba(0, 0, 0, 0.6);*/
+    padding-right: 25px;
+    color: #fff;
+    z-index: 50;
+    display: block;
+    list-style-type: none;
+    background: url("http://www.neu.edu.cn/assets/images/opacity60.png") repeat;
+}
+
+#nav li {
+    float: left;
+    _display: inline;
+    position: relative;
+    z-index: 60;
+    list-style-type: none;
+}
+
+#nav li a {
+    display: block;
+    line-height: 40px;
+    font-size: 15px;
+    color: #fff;
+    padding: 0 14px;
+    text-decoration: none;
+}
+
+#nav li ul {
+    background: #000;
+    /*background: rgba(0, 0, 0, 0.7);*/
+    position: absolute;
+    top: 40px;
+    width: 190px;
+    z-index: 2;
+    padding: 5px 0;
+    display: none;
+    list-style-type: none;
+    background: url("http://www.neu.edu.cn/assets/images/opacity70.png") repeat;
+}
+
+#nav li ul li {
+    text-align: left;
+    float: none;
+    display: block;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    transition: 0.3s;
+}
+
+#nav li ul li a {
+    line-height: 26px;
+    padding: 0 10px;
+    font-size: 14px;
+    color: #fff;
+}
+
+#nav li ul li:hover {
+    margin-left: 10px;
+}
+
+#nav li.last ul {
+    left: -77px;
+}
