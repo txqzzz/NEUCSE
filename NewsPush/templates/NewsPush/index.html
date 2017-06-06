@@ -1,6 +1,7 @@
 {% extends "layout/master.html" %}
 {% block maincontent %}
     {% for post in news_list %}
+        <img src="/media/{{post.cover}}" alt=""width="100px" height="100px"/>
         <h2><a href="{% url 'NewsPush:news_content_page' post.id %}"> {{ post.title }}</a>></h2>
         <br/>
     {% endfor %}
