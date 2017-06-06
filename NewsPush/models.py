@@ -9,6 +9,7 @@ class NewsPost(models.Model):
     title = models.CharField(max_length=100)
     # body = models.TextField()
     author =models.CharField(max_length=50)
+    cover = models.ImageField(upload_to='Img')
     body = RichTextField(blank=True, null=True, verbose_name="Content")
     timestamp = models.DateTimeField()
 

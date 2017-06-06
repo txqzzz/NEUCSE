@@ -1,18 +1,21 @@
-# NEUCSE treeView Test Project
+# NEU International Lab Website
+## Copyright@[NEUCSE](http://www.cse.neu.edu.cn/HomePage.aspx)
+
+[![Build Status](https://travis-ci.org/txqzzz/NEUCSE.svg?branch=master)](https://travis-ci.org/txqzzz/NEUCSE)
 
 ## Introduction
-This is one project based on [django-mptt] (https://django-mptt.github.io/django-mptt/index.html)for testing and developing treeView function of NEUCSE website.
-
+This is the website framework for NEU International Lab. 
 ## Features
-* Add/delete nodes of the treeList
-* Edit the leaves' content
+* Edit nodes of the treeList
+* Register/Login
+* Newspush
 
 ## Environment
 * Python2.7+
 * django1.11
 
 ## Requirements
-* ``django-mptt``
+* see```requirements.txt```
 
 ## User-Guide
 * You should deploy the project locally first, [this may help] (https://docs.djangoproject.com/en/1.11/)

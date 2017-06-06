@@ -41,7 +41,8 @@ INSTALLED_APPS = [
     'treeView',
     'NewsPush',
     'online',
-    'ckeditor'
+    'ckeditor',
+]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -52,6 +53,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media').replace('\\', '/')
 
 ROOT_URLCONF = 'NEUCSE.urls'
 

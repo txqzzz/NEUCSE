@@ -1,11 +1,6 @@
 # -*- coding: utf-8 -*-
-<<<<<<< HEAD
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
-=======
-from django.shortcuts import render,render_to_response
-from django.http import HttpResponse,HttpResponseRedirect
->>>>>>> rewrite the tree
 from django.template import RequestContext
 from django import forms
 from online.models import User
@@ -14,16 +9,10 @@ from io import BytesIO
 from random import randint
 from django.shortcuts import render
 
-<<<<<<< HEAD
 
 class UserForm(forms.Form):
     username = forms.CharField(label='用户名', max_length=100)
     password = forms.CharField(label='密码', widget=forms.PasswordInput())
-=======
-class UserForm(forms.Form): 
-    username = forms.CharField(label='username',max_length=100)
-    password = forms.CharField(label='password',widget=forms.PasswordInput())
->>>>>>> rewrite the tree
 
 
 def regist(req):
@@ -111,7 +100,7 @@ def verify(request, width, height):
     size = int(min(width / wordsCount, height) / 1.3)  # 字体大小设置
     bgColor = (randint(200, 255), randint(200, 255), randint(200, 255))  # 随机背景色
     img = Image.new('RGB', (width, height), bgColor)  # 创建图像
-    font = ImageFont.truetype('arial.ttf', size)  # 导入字体
+    font = ImageFont.truetype('Arial.ttf', size)  # 导入字体
     draw = ImageDraw.Draw(img)  # 创建画笔
     text = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     verifytext = ''

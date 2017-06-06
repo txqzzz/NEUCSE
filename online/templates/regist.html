@@ -1,17 +1,122 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>注册</title>
+    <style>
+
+        .reg-main {
+            text-align: center;
+            margin-top: 150px;
+        }
+
+        .reg-body {
+            font-size: 25px;
+        }
+
+        .reg-form {
+            font-size: 25px;
+            margin-top: 30px;
+        }
+
+        .reg-form p {
+            height: 50px;
+            margin: 20px;
+        }
+
+        .reg-button {
+            height: 50px;
+            width: 400px;
+            margin-top: 20px;
+            cursor: pointer;
+            background: rgba(3, 58, 85, 0.82);
+            text-shadow: 0 1px 1px rgba(0, 0, 0, .2);
+            font-size: 20px;
+            line-height: 33px;
+            color: #fff;
+            text-align: center;
+            border: 1px solid #1D80CF;
+        }
+
+        #id_username {
+            font-size: 20px;
+            height: 2.5em;
+            width: 15em;
+            margin-left: 1em;
+            border-width: 0.5px;
+            border-color: #d2d6de;
+            border-radius: 0;
+        }
+
+        #id_password {
+            font-size: 20px;
+            height: 2.5em;
+            width: 15em;
+            margin-left: 2.2em;
+            border-width: 0.5px;
+            border-radius: 0;
+            border-color: #d2d6de;
+        }
+
+        input:-webkit-autofill,
+        input:-webkit-autofill:focus {
+            box-shadow: 0 0 0 50px white inset;
+            -webkit-text-fill-color: #333;
+        }
+
+        input:-webkit-autofill:hover {
+            box-shadow: 0 0 0 50px #d2d6de inset;
+            -webkit-text-fill-color: #333;
+        }
+
+        td:hover {
+            border-bottom-width: 5px;
+            border-bottom-color: rgba(3, 58, 85, 0.82);
+        }
+
+        .reg-main a {
+            text-decoration: none;
+            font-size: 28px;
+        }
+
+        .reg-main a:nth-child(2) {
+            color: rgba(3, 58, 85, 0.82);
+        }
+
+        .reg-main a:nth-child(2):hover {
+            border-bottom: 3px solid rgba(3, 58, 85, 0.82);
+        }
+
+        .reg-main a:nth-child(1) {
+            color: #d2d6de;
+            margin-right: 40px;
+        }
+
+        .reg-main a:nth-child(1):hover {
+            color: #999;
+            margin-right: 40px;
+        }
+
+
+    </style>
 </head>
 
 <body>
-<h1>注册页面：</h1>
-<form method = 'post' enctype="multipart/form-data">
-    {% csrf_token %}
-    {{uf.as_p}}
-    <input type="submit" value = "ok" />
-</form>
-<br>
-<a href="http://127.0.0.1:8000/online/login/">登陆</a>
+
+<div class="reg-main">
+    <a href="http://127.0.0.1:8000/online/login/">登录</a>
+    <a href="http://127.0.0.1:8000/online/regist/">注册</a>
+    <hr style="width: 40%;margin-top:20px;margin-bottom: 40px">
+
+    <div class="reg-body">
+        <div>
+            <form class="reg-form" method='post' enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ uf.as_p }}
+                <input class="reg-button" type="submit" value="注册">
+            </form>
+        </div>
+    </div>
+</div>
 </body>
+
 </html>
