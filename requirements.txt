@@ -10,3 +10,12 @@ pytest-cov>=2.4.0
 
 # Coverage.py
 coverage==4.4
+
+# NewsPush
+django-ckeditor>=5.2.2
+olefile>=0.44
+
+# Online
+pillow>=4.1.1
+
+

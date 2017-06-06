@@ -1,4 +1,6 @@
-*.idea*
-.idea/workspace.xml
-*__pycache_*
-runserver.bat
+.idea/
+*__pycache__*
+*.pyc
+.DS_Store
+.coverage
+db.sqlite3
