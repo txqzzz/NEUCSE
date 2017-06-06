@@ -18,6 +18,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from treeView import views
+admin.autodiscover()
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -25,6 +26,7 @@ urlpatterns = [
     url(r'^treeView/', include('treeView.urls')),
     url(r'^$', views.index, name='index'),
     url(r'newspush/', include('NewsPush.urls', namespace='NewsPush')),
+    url(r'^online/',include('online.urls', namespace='online')),
 #    url(r'^组织结构.html', views., name='index'),
 #    url(r'^$/组织结构.html/', views.institude, name='institude'),
 ]
