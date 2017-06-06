@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'mptt',
     'treeView',
     'NewsPush',
-    'ckeditor',
     'online'
 ]
 
@@ -123,12 +122,3 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
-
-CKEDITOR_JQUERY_URL ='/static/js/jquery.min.js'
-CKEDITOR_IMAGE_BACKEND = "pillow"
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'full',
-        'language': 'zh-cn'
-    }
-}
