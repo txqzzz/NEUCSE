@@ -1,0 +1,82 @@
+{% load static %}
+{% load mptt_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>东北大学国际实验室</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="{% static "css/bootstrap.min.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/bootstrap-theme.min.css" %}"/>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Css -->
+    <link rel="stylesheet" href="{% static "css/css.css" %}"/>
+    <link rel="stylesheet" href="{% static "css/index.css" %}">
+    <link rel="stylesheet" href="{% static "css/footer.css" %}">
+    <link rel="stylesheet" href="{% static "css/nav-menu.css" %}">
+</head>
+<body>
+<div class="wrapper" style="position:relative; top:-50px;">
+    <div class="container">
+        <div class="row header">
+            <div class="col">
+                {% include "layout/header.html" %}
+            </div>
+        </div>
+        <div class="row main">
+            <div class="col-xs-6 col-md-2 col-lg-2" id="treeView">
+                <div class="framework_nav">
+                    <ul>
+                        <li class="all"><a href="#">实验室概况</a> <!-- need css repair -->
+                            <!-- <div class="manage-button"><a href="#">Manage</a></div> <!-- ###need repair### -->
+                        </li>
+                        <ul show="true">
+                            {% recursetree nodes %}
+                                <li>
+                                    {% if node.is_leaf_node %}
+                                        <li><a href="/treeView/{{ node.name }}.html">{{ node.name }}</a></li>
+                                    {% else %}
+                                        <button type="button" class="buttonDown"></button>
+                                        <li><a href="# ">{{ node.name }}</a></li>
+                                        <ul>
+                                            <li><a href="#">{{ children }}</a></li>
+                                        </ul>
+                                    {% endif %}
+                                </li>
+                            {% endrecursetree %}
+                        </ul>
+                    </ul>
+                </div>
+            </div>
+            <div id="maincontent" class="col-xs-12 col-sm-6 col-md-10 col-lg-10">
+                {% block maincontent %}
+                {% endblock %}
+            </div>
+        </div>
+        <div class="row footer">
+            {% include "layout/footer.html" %}
+        </div>
+    </div>
+</div>
+<!-- Js -->
+<script src="{% static "js/jquery.min.js" %}"></script>
+<script src="{% static "js/bootstrap.min.js" %}"></script>
+<script src="{% static "js/simpleTree.js" %}"></script>
+<script type="text/javascript">
+    $(function () {
+        $(".framework_nav").SimpleTree({});
+    });
+</script>
+<script src="{% static "js/nav-menu.js" %}"></script>
+</body>
+</html>

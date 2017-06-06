@@ -1,0 +1,80 @@
+footer {
+    text-align: center;
+    background-color: #032f55;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    position: relative;
+    height: 80px;
+    padding: 10px;
+    font-size: 12px;
+}
+#footer_link a {
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+}
+#footer_link a:hover {
+	text-decoration: underline;
+}
+#footer_link .line {
+  margin: 0 5px;
+}
+
+#footer_text p{
+    margin: 0;
+    border: 0;
+    padding: 0;
+}
+
+#footer_left, #footer_right {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+#footer_left {
+  margin-left:10px;
+  color: #fff;
+  float: left;
+}
+#footer_left a {
+  color: #fff;
+  text-decoration: none;
+}
+#footer_left a:hover {
+  text-decoration: underline;
+}
+
+#footer_right {
+  color: #fff;
+  margin-left: 10px;
+  /*float: left;*/
+}
+#footer_right a {
+  display: inline-block;
+  vertical-align: middle;
+  float: left;
+  text-decoration: none;
+}
+#footer_right a .text {
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+  margin-right: 10px;
+  color: #fff;
+}
+#footer_right .weixin .img {
+  display: inline-block;
+  width: 40px;
+  height: 35px;
+  background: url("http://www.neu.edu.cn/assets/images/icons.png") no-repeat 0 -28px;
+}
+#footer_right .weibo .img {
+  display: inline-block;
+  width: 40px;
+  height: 35px;
+  background: url("http://www.neu.edu.cn/assets/images/icons.png") no-repeat -40px -28px;
+}
+
+#footer hr {
+  margin: 4px 0;
+}
