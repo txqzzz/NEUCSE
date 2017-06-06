@@ -1,6 +1,11 @@
 # -*- coding: utf-8 -*-
+<<<<<<< HEAD
 from django.shortcuts import render, render_to_response
 from django.http import HttpResponse, HttpResponseRedirect
+=======
+from django.shortcuts import render,render_to_response
+from django.http import HttpResponse,HttpResponseRedirect
+>>>>>>> rewrite the tree
 from django.template import RequestContext
 from django import forms
 from online.models import User
@@ -9,10 +14,16 @@ from io import BytesIO
 from random import randint
 from django.shortcuts import render
 
+<<<<<<< HEAD
 
 class UserForm(forms.Form):
     username = forms.CharField(label='用户名', max_length=100)
     password = forms.CharField(label='密码', widget=forms.PasswordInput())
+=======
+class UserForm(forms.Form): 
+    username = forms.CharField(label='username',max_length=100)
+    password = forms.CharField(label='password',widget=forms.PasswordInput())
+>>>>>>> rewrite the tree
 
 
 def regist(req):

@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'NewsPush',
     'online',
     'ckeditor'
-]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
