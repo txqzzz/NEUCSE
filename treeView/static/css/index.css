@@ -22,7 +22,7 @@ html, body {
 }
 
 
-#treeView {
+#treeView, .tree{
     background-color: #00A0E8;
 }
 

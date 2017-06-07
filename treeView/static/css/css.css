@@ -30,14 +30,22 @@ a {
 	margin-right: 3px;
     margin-left: -1em;
     margin-top: 0.5em;
-	background: transparent url('/static/img/arrows.png') no-repeat bottom center;
+	/*background: transparent url('/static/img/arrows.png') no-repeat bottom center;*/
 	border: none;
 	float: left;
 	cursor: pointer;
 }
-.framework_nav button.switched {
-	background: transparent url('/static/img/arrows.png') no-repeat top center;
+
+.framework_nav button.arrow-down {
+    background: transparent url('/static/img/arrow-down.png') no-repeat bottom center
 }
+
+.framework_nav button.arrow-right {
+    background: transparent url('/static/img/arrow-right.png') no-repeat bottom center;
+}
+/*.framework_nav button.switched {*/
+	/*background: transparent url('/static/img/arrows.png') no-repeat top center;*/
+/*}*/
 
 .framework_nav .folder {
     /*background:url(http://www.umassd.edu/media/supportingfiles/layoutassets/images/arrows.png) 5px center no-repeat;*/

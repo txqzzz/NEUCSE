@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{% static "css/index.css" %}">
     <link rel="stylesheet" href="{% static "css/footer.css" %}">
     <link rel="stylesheet" href="{% static "css/nav-menu.css" %}">
+
+    <script src="{% static "js/jquery.min.js" %}"></script>
 </head>
 <body>
 <div class="wrapper" style="position:relative; top:-50px;">
@@ -46,7 +48,7 @@
                                     {% if node.is_leaf_node %}
                                         <li><a href="/treeView/{{ node.name }}.html">{{ node.name }}</a></li>
                                     {% else %}
-                                        <button type="button" class="buttonDown"></button>
+                                        <button type="button" class="buttonDown arrow-right"></button>
                                         <li><a href="# ">{{ node.name }}</a></li>
                                         <ul>
                                             <li><a href="#">{{ children }}</a></li>
@@ -69,7 +71,7 @@
     </div>
 </div>
 <!-- Js -->
-<script src="{% static "js/jquery.min.js" %}"></script>
+
 <script src="{% static "js/bootstrap.min.js" %}"></script>
 <script src="{% static "js/simpleTree.js" %}"></script>
 <script type="text/javascript">

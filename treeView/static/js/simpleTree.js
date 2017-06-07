@@ -14,17 +14,17 @@ $(function () {
 
                 this.tree.find("ul ul[show='true']").show();
                 this.tree.find("ul ul[show='true']").prev("li").addClass("open");
-            }
+            };
             /* option._init() End */
 
             this.find("li").click(function () {
                 option.click($(this).find("a")[0]);
                 if ($(this).next("ul").attr("show") == "true") {
                     $(this).next("ul").attr("show", "false");
-                    $(this).parent().find("button").first().removeClass("switched");
+                    $(this).parent().find("button").first().removeClass("switched arrow-down").addClass('arrow-right');
                 } else {
                     $(this).next("ul").attr("show", "true");
-                    $(this).parent().find("button").first().addClass("switched")
+                    $(this).parent().find("button").first().addClass("switched arrow-down").removeClass('arrow-right');
                 }
                 option._init();
             });
