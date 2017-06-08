@@ -18,4 +18,6 @@ olefile>=0.44
 # Online
 pillow>=4.1.1
 
-
+# Geetest
+git+git://github.com/zhouziqunzzq/geetest_py.git
+requests>=2.8

@@ -1,4 +1,0 @@
-*.idea*
-.idea/workspace.xml
-*__pycache_*
-runserver.bat

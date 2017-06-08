@@ -36,12 +36,6 @@
             border: 1px solid #1D80CF;
         }
 
-        #captcha {
-            width: 100px;
-            height: 35px;
-            margin-left: 0px;
-        }
-
         #id_username {
             font-size: 20px;
             height: 2.5em;
@@ -60,22 +54,6 @@
             border-width: 0.5px;
             border-radius: 0;
             border-color: #d2d6de;
-        }
-
-        #verify,
-        #verify:focus {
-            font-size: 20px;
-            height: 2.5em;
-            width: 15em;
-            margin-left: 12px;
-            border-width: 0.5px;
-            border-color: #d2d6de;
-            border-radius: 0;
-            background-color: white;
-        }
-
-        #verify:hover {
-            background-color: #d2d6de;
         }
 
         input:-webkit-autofill,
@@ -117,33 +95,88 @@
             margin-left: 40px;
         }
 
+        .show {
+            display: block;
+        }
 
-            </style>
+        .hide {
+            display: none;
+        }
+
+        #embed-captcha {
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        #notice {
+            color: red;
+        }
+
+    </style>
 </head>
 
 <body>
 <div class="login-main">
 
-    <a href="http://127.0.0.1:8000/online/login/">登录</a>
-    <a href="http://127.0.0.1:8000/online/regist/">注册</a>
+    <a href="{% url 'online:login' %}">登录</a>
+    <a href="{% url 'online:regist' %}">注册</a>
     <hr style="width: 40%;margin-top:20px;margin-bottom: 40px">
 
     <div class="login-body">
         <div>
-            <form class="login-form" method='post' enctype="multipart/form-data">
+            <form class="login-form" action="{% url 'online:login' %}" method='post'
+                  enctype="multipart/form-data">
                 {% csrf_token %}
                 {{ uf.as_p }}
-                <div>
-                    <img id="captcha" src="/online/verify/300/80/"/>
-                    <input type="text" name="verify" id="verify"/>
-                    <!--input type="submit"/-->
-                </div>
-                <input class="login-button" type="submit" value="登录"/>
+                <div id="embed-captcha"></div>
+                <p id="wait" class="show">正在加载验证码......</p>
+                <p id="notice" class="hide">请先拖动验证码到相应位置</p>
+                <input id="embed-submit" class="login-button" type="submit" value="登录"/>
             </form>
         </div>
 
     </div>
 </div>
-
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/gt.js"></script>
+<script>
+    var handlerEmbed = function (captchaObj) {
+        $("#embed-submit").click(function (e) {
+            var validate = captchaObj.getValidate();
+            if (!validate) {
+                // $("#notice")[0].className = "show";
+                 $("#notice").fadeIn();
+                setTimeout(function () {
+                    $("#notice").fadeOut();
+                }, 2000);
+                e.preventDefault();
+            }
+        });
+        // 将验证码加到id为captcha的元素里，同时会有三个input的值：geetest_challenge, geetest_validate, geetest_seccode
+        captchaObj.appendTo("#embed-captcha");
+        captchaObj.onReady(function () {
+            $("#wait")[0].className = "hide";
+        });
+        // 更多接口参考：http://www.geetest.com/install/sections/idx-client-sdk.html
+    };
+    $.ajax({
+        // 获取id，challenge，success（是否启用failback）
+        url: "{% url 'online:getgeetestcaptcha' %}?t=" + (new Date()).getTime(), // 加随机数防止缓存
+        type: "get",
+        dataType: "json",
+        success: function (data) {
+            // 使用initGeetest接口
+            // 参数1：配置参数
+            // 参数2：回调，回调的第一个参数验证码对象，之后可以使用它做appendTo之类的事件
+            initGeetest({
+                gt: data.gt,
+                challenge: data.challenge,
+                product: "embed", // 产品形式，包括：float，embed，popup。注意只对PC版验证码有效
+                offline: !data.success // 表示用户后台检测极验服务器是否宕机，一般不需要关注
+                // 更多配置参数请参见：http://www.geetest.com/install/sections/idx-client-sdk.html#config
+            }, handlerEmbed);
+        }
+    });
+</script>
 </body>
 </html>

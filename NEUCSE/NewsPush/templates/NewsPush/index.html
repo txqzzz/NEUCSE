@@ -1,7 +1,0 @@
-{% extends "layout/master.html" %}
-{% block maincontent %}
-    {% for post in news_list %}
-        <h2><a href="{% url 'NewsPush:news_content_page' post.id %}"> {{ post.title }}</a>></h2>
-        <br/>
-    {% endfor %}
-{% endblock %}

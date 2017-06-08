@@ -134,3 +134,9 @@ CKEDITOR_CONFIGS = {
         'language': 'zh-cn'
     }
 }
+
+
+# Geetest
+
+GEETEST_ID = 'f07f7050570d75cd056626644a728db3'
+GEETEST_KEY = 'd0127794c3bb22463617a4daef9eb5ec'
