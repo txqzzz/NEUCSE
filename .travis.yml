@@ -19,6 +19,6 @@ before_script:
 script:
     - python manage.py migrate -v 3
     - python manage.py test -v 3
-    - coverage run manage.py test -v 3
+    - coverage run --source=NEUCSE,online,newspush,treeView  manage.py test 
 after_script:
     - coveralls
