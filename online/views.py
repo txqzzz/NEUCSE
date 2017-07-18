@@ -1,11 +1,17 @@
 # -*- coding: utf-8 -*-
 from django.http import HttpResponse, HttpResponseRedirect
 from django import forms
-from online.models import User
+from online.models import UserProfile
+from django.contrib.auth.models import User
+from django.contrib import auth
 from django.shortcuts import render
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from geetest import GeetestLib
+from django.utils import timezone
+from .models import create_user_profile
+from django.db.models.signals import post_save
+
 
 
 class UserForm(forms.Form):
@@ -20,13 +26,15 @@ def regist(req):
             if uf.is_valid():
                 username = uf.cleaned_data['username']
                 password = uf.cleaned_data['password']
-                if (User.objects.filter(username__exact=username)):
+                if (User.objects.filter (username__exact=username)):
                     return HttpResponse('该用户名已存在！')
                 else:
-                    User.objects.create(username=username, password=password)
-                    return HttpResponse('注册成功!')
-        else:
-            return HttpResponse('验证码输入错误，请重新输入')
+                    user = User.objects.create_user(username,"",password)
+                    user.save()
+                    user.date_joined=timezone.now()
+                    post_save.connect(create_user_profile, sender=User)
+                    # return HttpResponse('注册成功!')  提示框
+                    return render(req, 'online/login.html', {'uf': uf})
     else:
         if req.session.get('username', False):
             return HttpResponseRedirect(reverse('online:index'))
@@ -42,11 +50,17 @@ def login(req):
             if uf.is_valid():
                 username = uf.cleaned_data['username']
                 password = uf.cleaned_data['password']
-                user = User.objects.filter(username__exact=username, password__exact=password)
-                if user:
-                    response = HttpResponseRedirect(reverse('online:index'))
-                    req.session['username'] = username
-                    return response
+                # authenticate() 验证给出的username和password是否是一个有效用户。如果有效，则返回一个User对象，无效则返回None。
+                user = auth.authenticate(username=username, password=password)
+                if user is not None:
+                    if user.is_active:
+                        user.last_login = timezone.now()
+                        auth.login(req, user)
+                        response = HttpResponseRedirect(reverse('online:index'))
+                        req.session['username'] = username
+                        return response
+                    else:
+                        return HttpResponse('锁定状态无法使用')
                 else:
                     return HttpResponse('用户名或密码不正确')
         else:
@@ -66,6 +80,7 @@ def index(req):
 
 def logout(req):
     try:
+        auth.logout(req)
         del req.session['username']
     except KeyError:
         pass
@@ -93,3 +108,11 @@ def geetest_post_validate(request):
     else:
         result = gt.failback_validate(challenge, validate, seccode)
     return result
+
+
+
+# fuck check  permission
+# if request.user.is_authenticated():
+#     针对已经登录验证的用户
+# else:
+#     对匿名用户

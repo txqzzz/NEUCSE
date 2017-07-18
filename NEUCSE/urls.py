@@ -26,9 +26,11 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     #url(r'^treeView/', views.tree, name='tree'),
     url(r'^treeView/', include('treeView.urls')),
+
     url(r'^$', views.index, name='index'),
     url(r'newspush/', include('NewsPush.urls', namespace='NewsPush')),
     url(r'^online/',include('online.urls', namespace='online')),
+    url(r'^ckeditor/', include('ckeditor_uploader.urls')),
 #    url(r'^组织结构.html', views., name='index'),
 #    url(r'^$/组织结构.html/', views.institude, name='institude'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

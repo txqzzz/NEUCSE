@@ -3,6 +3,7 @@
     {% for post in news_list %}
         <img src="/media/{{post.cover}}" alt=""width="100px" height="100px"/>
         <h2><a href="{% url 'NewsPush:news_content_page' post.id %}"> {{ post.title }}</a>></h2>
+        <h3> {{ post.headline }} </h3>
         <br/>
     {% endfor %}
 {% endblock %}

@@ -1,12 +1,19 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 from django.db import models
-from mptt.models import MPTTModel
+from mptt.models import MPTTModel,TreeForeignKey
 
 
 class treeView(MPTTModel):
     name = models.CharField('root', max_length=50, unique=True)
-    parent = models.ForeignKey('self', verbose_name='lower-case', null=True, blank=True, related_name='children')
+    parent = TreeForeignKey(
+        'self',
+        verbose_name='lower-case',
+        null=True,
+        blank=True,
+        related_name='children',
+        on_delete=models.CASCADE
+    )
     rank = models.IntegerField(default=0)
 
     class Meta:

@@ -6,13 +6,14 @@ from . import models
 from treeView.models import treeView
 
 
-# Create your views here.
-# something wrong
+
+
+
 def index(request):
      news_list = models.NewsPost.objects.all()
      nodes = treeView.objects.all()
      return render(request,'NewsPush/index.html', {'news_list': news_list, 'nodes': nodes})
-  #  return HttpResponse("hello world!")
+
 
 def news_content_page(request,news_list_id):
     news = models.NewsPost.objects.get(pk=news_list_id)
