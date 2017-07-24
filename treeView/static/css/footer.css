@@ -4,7 +4,8 @@ footer {
     border-bottom-left-radius: 5px;
     border-bottom-right-radius: 5px;
     position: relative;
-    height: 80px;
+    height: 105px;
+    width:1170px;
     padding: 10px;
     font-size: 12px;
 }

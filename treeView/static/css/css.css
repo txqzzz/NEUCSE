@@ -1,3 +1,9 @@
+
+
+
+
+
+
 ul, li {
     list-style-type: none;
 }
@@ -107,6 +113,5 @@ a {
 }
 
 #maincontent {
-    margin-right: 0px;
     background-color: white;
 }
